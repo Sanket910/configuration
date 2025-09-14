@@ -1,14 +1,20 @@
 spring:
+  h2:
+    console:
+      enabled: true  # Enables the H2 console for web-based access
+      path: /h2-console # Specifies the URL path for the H2 console
   datasource:
-    url: jdbc:mysql://localhost:3307/embarkx
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: jdbc:h2:mem:testdb # Connects to an in-memory database named 'testdb'
+    # For file-based persistence, use: jdbc:h2:file:./data/testdb
+    driver-class-name: org.h2.Driver # Specifies the H2 JDBC driver
+    username: sa # Default username for H2
+    password: # Default empty password for H2
   jpa:
-    database: mysql
-    show-sql: true
     hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+      ddl-auto: update # Automatically updates the schema based on entities
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect # Specifies the Hibernate dialect for H2
 
 server:
   port: 8083
