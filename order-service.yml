@@ -27,12 +27,6 @@ management:
   endpoint:
     health:
       show-details: always
-  health:
-    circuitbreakers:
-      enabled: true
-  tracing:
-    sampling:
-      probability: 1.0
 
 app:
   message: "Hello Order!"
