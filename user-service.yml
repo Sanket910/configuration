@@ -29,6 +29,8 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
+    service-url:
+      defaultZone: http://new-config-lb-1367130368.eu-north-1.elb.amazonaws.com:81
 
 logging:
   file:
