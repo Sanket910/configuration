@@ -21,13 +21,13 @@ spring:
           filters:
             - "RewritePath=/(?<segment>.*),/api/${segment}"
         - id: eureka-server
-          uri: http://localhost:8761
+          uri: http://new-config-lb-1367130368.eu-north-1.elb.amazonaws.com:81
           predicates:
             - Path=/eureka/main
           filters:
             - SetPath=/
         - id: eureka-server-static
-          uri: http://localhost:8761
+          uri: http://new-config-lb-1367130368.eu-north-1.elb.amazonaws.com:81
           predicates:
             - Path=/eureka/**
 
