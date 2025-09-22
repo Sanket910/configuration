@@ -1,0 +1,38 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/products/**
+          filters:
+            - "RewritePath=/products(?<segment>/?.*),/api/products${segment}"
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+          filters:
+            - "RewritePath=/users(?<segment>/?.*),/api/users${segment}"
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/orders/**, /cart/**
+          filters:
+            - "RewritePath=/(?<segment>.*),/api/${segment}"
+      discovery:
+        locator:
+          enabled: true  # Auto route using Eureka      
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
