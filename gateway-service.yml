@@ -30,6 +30,9 @@ spring:
           uri: http://new-config-lb-1367130368.eu-north-1.elb.amazonaws.com:81
           predicates:
             - Path=/eureka/**
+      discovery:
+        locator:
+          enabled: true  # Auto route using Eureka      
 eureka:
   client:
     register-with-eureka: true
