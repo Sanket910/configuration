@@ -20,9 +20,13 @@ spring:
             - Path=/orders/**, /cart/**
           filters:
             - "RewritePath=/(?<segment>.*),/api/${segment}"
+    aws:
       discovery:
-        locator:
-          enabled: true  # Auto route using Eureka      
+        enabled: true
+        service-id: gateway
+      cloudmap:
+        discovery:
+          namespace: myapp.local 
 
 server:
   port: 8080
