@@ -9,7 +9,7 @@ spring:
           filters:
             - "RewritePath=/products(?<segment>/?.*),/api/products${segment}"
         - id: user-service
-          uri: lb://user-service
+          uri: http://user-service:8082
           predicates:
             - Path=/users/**
           filters:
