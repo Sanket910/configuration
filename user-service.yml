@@ -15,7 +15,15 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect # Specifies the Hibernate dialect for H2
-
+  cloud:
+    aws:
+      discovery:
+        enabled: true
+        service-id: user-service
+      cloudmap:
+        discovery:
+          namespace: myapp.local
+  
 server:
   port: 8082
 
