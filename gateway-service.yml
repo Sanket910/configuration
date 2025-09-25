@@ -3,19 +3,19 @@ spring:
     gateway:
       routes:
         - id: product-service
-          uri: lb://PRODUCT-SERVICE
+          uri: lb://product-service
           predicates:
             - Path=/products/**
           filters:
             - "RewritePath=/products(?<segment>/?.*),/api/products${segment}"
         - id: user-service
-          uri: lb://USER-SERVICE
+          uri: lb://user-service
           predicates:
             - Path=/users/**
           filters:
             - "RewritePath=/users(?<segment>/?.*),/api/users${segment}"
         - id: order-service
-          uri: lb://ORDER-SERVICE
+          uri: lb://order-service
           predicates:
             - Path=/orders/**, /cart/**
           filters:
