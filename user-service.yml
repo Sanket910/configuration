@@ -22,7 +22,7 @@ spring:
         service-id: user-service
       cloudmap:
         discovery:
-          namespace: myapp.local
+          namespace: test.new
   
 server:
   port: 8082
